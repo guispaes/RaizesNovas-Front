@@ -1,0 +1,109 @@
+:root {
+    --bg-color: #FDFBF4; /* Bege do seu PDF */
+    --nav-height: 95px;  /* Ajuste este valor até a tarja sumir */
+}
+
+/* Reset e Body */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    overflow-x: hidden;
+}
+
+/* Navbar Personalizada */
+.navbar {
+    min-height: var(--nav-height);
+    background-color: var(--bg-color) !important;
+}
+
+.navbar-logo {
+    width: 80px;
+    height: 70px;
+    object-fit: contain;
+}
+
+/* Carrossel sem frestas */
+.carousel, .carousel-inner, .carousel-item {
+    height: calc(100vh - var(--nav-height));
+    width: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Faz a foto preencher sem esticar */
+    display: block;
+}
+
+/* Melhoria de contraste no texto sobre a foto */
+.carousel-caption {
+    left: 80px;
+}
+
+/* Diminui a largura da área de clique dos controles do carrossel */
+.carousel-control-prev,
+.carousel-control-next {
+    width: 5%; /* Reduz de 15% para 5%, liberando o centro e a esquerda para o seu botão */
+    z-index: 1; /* Garante que fiquem abaixo de elementos importantes se necessário */
+}
+
+/* Garante que o conteúdo da legenda (seu botão) fique SEMPRE por cima dos controles */
+.carousel-caption {
+    z-index: 10; 
+}
+
+/* Opcional: Se quiser que as setinhas fiquem mais visíveis agora que a área é menor */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: drop-shadow(2px 2px 2px rgba(0,0,0,0.5));
+}
+
+.carousel-caption h1{
+    color: #FFF;
+    text-shadow: 0 1px 1px #115838;
+    -webkit-text-stroke-width: 0.5px;
+    -webkit-text-stroke-color: #115838;
+    font-family: Inter;
+    font-size: 52.863px;
+    font-style: normal;
+    font-weight: 900;
+    line-height: normal;
+}
+
+/* Estilo personalizado para o botão de destaque do carrossel */
+.btn-hero {
+    padding: 15px 40px; /* Aumenta o respiro interno (mais largo e alto) */
+    font-size: 1.25rem; /* Aumenta o tamanho da fonte (aprox. 20px) */
+    font-weight: 600;   /* Deixa o texto mais robusto */
+    border-radius: 8px; /* Mantém o arredondamento profissional */
+    transition: all 0.3s ease; /* Suaviza o efeito ao passar o mouse */
+}
+
+/* Efeito ao passar o mouse para dar feedback ao usuário */
+.btn-hero:hover {
+    transform: scale(1.05); /* Dá um leve "pulo" para frente */
+    filter: brightness(1.1); /* Brilha um pouco mais o verde */
+}
+
+.display-1 {
+    text-align: center;
+    padding: 35px;
+}
+.card-p{
+    padding: 55px;
+}
+
+/* Efeito na logo do Instagram da página de Oficinas */
+.instagram-link img {
+    transition: transform 0.3s ease;
+}
+
+.instagram-link:hover img {
+    transform: scale(1.1); /* Dá um zoom sutil quando o usuário passa o mouse */
+    filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.2)); /* Adiciona uma sombra */
+}
