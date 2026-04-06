@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login Admin - Raízes Novas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="d-flex align-items-center py-4 bg-light" style="height: 100vh;">
+    
+    <main class="form-signin w-100 m-auto text-center" style="max-width: 330px;">
+        <form id="form-login">
+            <h1 class="h3 mb-3 fw-normal">Acesso Restrito</h1>
+            <p class="text-muted">Área de administração Raízes Novas</p>
+
+            <div class="form-floating mb-2">
+                <input type="text" class="form-control" id="usuario" placeholder="Nome de usuário" required>
+                <label for="usuario">Usuário</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control" id="senha" placeholder="Senha" required>
+                <label for="senha">Senha</label>
+            </div>
+
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Entrar</button>
+            <div id="mensagem-erro" class="text-danger mt-3 d-none">E-mail ou senha incorretos.</div>
+        </form>
+    </main>
+
+    <script src="js/login.js"></script>
+</body>
+</html>

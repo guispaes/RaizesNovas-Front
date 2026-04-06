@@ -107,3 +107,35 @@ body {
     transform: scale(1.1); /* Dá um zoom sutil quando o usuário passa o mouse */
     filter: drop-shadow(0px 4px 8px rgba(0,0,0,0.2)); /* Adiciona uma sombra */
 }
+
+/* ==========================================
+   Página Quem Somos - Efeito Split Screen
+   ========================================== */
+
+.lado-esquerdo-fixo {
+    position: sticky;
+    top: 0;
+    height: 100vh; /* Ocupa exatamente 100% da altura da tela */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa; /* Fundo cinza bem claro para destacar a logo */
+    border-right: 1px solid #e9ecef;
+}
+
+.logo-gigante {
+    max-width: 80%; /* Para não colar nas bordas */
+    max-height: 80%;
+    object-fit: contain;
+}
+
+.lado-direito-scroll {
+    padding: 6rem 4rem; /* Espaçamento interno para o texto respirar */
+}
+
+/* Ajuste para telas menores (celulares) para não quebrar o texto */
+@media (max-width: 991px) {
+    .lado-direito-scroll {
+        padding: 3rem 1.5rem;
+    }
+}

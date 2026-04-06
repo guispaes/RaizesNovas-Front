@@ -3,39 +3,48 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 async function carregarArtigoDetalhado() {
-    // 1. O truque de mestre: ler o parâmetro '?id=' da URL do navegador
+    // 1. Captura o ID do artigo na URL (?id=...)
     const urlParams = new URLSearchParams(window.location.search);
     const artigoId = urlParams.get('id');
 
-    // Se o usuário tentou acessar a página direto sem clicar em um card
     if (!artigoId) {
         mostrarErro("Artigo não encontrado. Por favor, volte à lista de artigos.");
         return;
     }
 
     try {
-        // 2. Faz o GET na sua API Java buscando um artigo específico pelo ID
-        // Note que estamos usando a variável API_BASE_URL que criamos no api.js
-        const resposta = await fetch(`${API_BASE_URL}/artigos/${artigoId}`);
+        // 2. Chamada para a API no Render buscando o ID específico (Agora o Java aceita!)
+        const resposta = await fetch(`https://raizesnovas-api.onrender.com/api/artigos/${artigoId}`);
 
         if (!resposta.ok) {
             throw new Error('Artigo não encontrado no banco de dados');
         }
 
-        // 3. Converte a resposta do Java para objeto JavaScript
         const artigo = await resposta.json();
 
-        // 4. Injeta os dados nos IDs correspondentes do seu HTML
-        // Atenção: Os nomes 'titulo', 'conteudo', etc., devem ser EXATAMENTE iguais aos do seu modelo Java
-        document.getElementById('artigo-titulo').textContent = artigo.titulo;
-        
-        // Usamos innerHTML no conteúdo caso o Java envie parágrafos formatados com tags <p> ou <br>
-        document.getElementById('artigo-conteudo').innerHTML = artigo.conteudo;
+        // 3. Injeta os dados no HTML 
+        const tituloElem = document.getElementById('artigo-titulo');
+        const conteudoElem = document.getElementById('artigo-conteudo');
+        const imgElem = document.getElementById('artigo-imagem');
+        const instElem = document.getElementById('artigo-instituicao'); 
 
-        const imgElement = document.getElementById('artigo-imagem');
-        if (imgElement) {
-            imgElement.src = artigo.urlImagem || 'assets/img/Carrosel1.jpg'; // Imagem padrão caso não tenha no banco
-            imgElement.alt = artigo.titulo;
+        if (tituloElem) tituloElem.textContent = artigo.titulo;
+        
+        // Renderiza o HTML vindo do TinyMCE
+        if (conteudoElem) conteudoElem.innerHTML = artigo.conteudo;
+
+        // PADRONIZAÇÃO: Puxando o nome da palavra-chave ao invés de "instituicao"
+        if (instElem) {
+            let nomePalavraChave = 'Geral';
+            if (artigo.palavrasChave && artigo.palavrasChave.length > 0) {
+                nomePalavraChave = artigo.palavrasChave[0].palavraChave;
+            }
+            instElem.textContent = nomePalavraChave;
+        }
+
+        if (imgElem) {
+            imgElem.src = artigo.imagemHeader || 'assets/img/logo.png';
+            imgElem.alt = artigo.titulo;
         }
 
         // Altera o título da aba do navegador dinamicamente
@@ -43,11 +52,11 @@ async function carregarArtigoDetalhado() {
 
     } catch (erro) {
         console.error("Erro ao carregar os detalhes do artigo:", erro);
-        mostrarErro("Ocorreu um erro ao carregar o artigo. Tente novamente mais tarde.");
+        mostrarErro("Ocorreu um erro ao carregar a matéria. Verifique sua conexão.");
     }
 }
 
-// Função auxiliar para exibir uma mensagem bonita se algo der errado
+// Função para exibir o alerta de erro bonitinho na tela
 function mostrarErro(mensagem) {
     const container = document.getElementById('conteudo-principal');
     if (container) {
