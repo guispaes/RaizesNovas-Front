@@ -133,41 +133,45 @@ body {
     padding: 6rem 4rem; /* Espaçamento interno para o texto respirar */
 }
 
-/* Ajuste para telas menores (celulares) para não quebrar o texto */
-@media (max-width: 991px) {
-    .lado-direito-scroll {
-        padding: 3rem 1.5rem;
+/* ==========================================
+   Ajuste para Telas Pequenas (Celulares)
+   ========================================== */
+@media (max-width: 768px) {
+    /* 1. Garante que as setas fiquem SEMPRE por cima de tudo para serem clicáveis */
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 12% !important;
+        z-index: 20 !important; /* Maior que o 10 da legenda */
+    }
+
+    /* 2. Ajusta a legenda para não sumir e não cortar */
+    .carousel-caption {
+        left: 5% !important;
+        right: 5% !important;
+        width: 90% !important;
+        bottom: 40px !important; /* Sobe um pouco o botão do fundo da tela */
+        text-align: center !important; /* Centraliza no celular fica mais bonito */
+        z-index: 10 !important;
+    }
+
+    /* 3. Ajusta o texto para telas muito pequenas (iPhone SE, etc) */
+    .carousel-caption h1 {
+        font-size: 24px !important; /* Fonte menor para não quebrar em 4 linhas */
+        line-height: 1.2 !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* 4. Ajusta o botão para não ficar gigante na tela pequena */
+    .btn-hero {
+        padding: 10px 25px !important;
+        font-size: 1rem !important;
     }
 }
 
-
-@media (max-width: 850px) {
-    /* 1. Traz as setas do carrossel um pouco mais para o centro */
-    .carousel-control-prev {
-        left: 5px !important;
-    }
-    
-    .carousel-control-next {
-        right: 5px !important;
-    }
-
-    /* 2. Aumenta a área de clique para o dedo no celular */
-    .carousel-control-prev,
-    .carousel-control-next {
-        width: 15% !important; 
-    }
-
-    /* 3. Centraliza o texto e o botão no celular */
-    .carousel-caption {
-        left: 10% !important;
-        right: 10% !important;
-        text-align: center !important; /* Força o texto para o meio */
-        bottom: 20px !important; /* Desce o texto para não tampar o centro da foto */
-    }
-
-    /* 4. Diminui o tamanho da fonte gigante para caber na tela pequena */
-    .carousel-caption h1 {
-        font-size: 32px !important; /* Reduz de 52px para 32px */
-        text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important; /* Sombra mais escura pra ler melhor */
+/* Ajuste extra para a logo não sumir no menu hamburguer do celular */
+@media (max-width: 991px) {
+    .navbar-logo {
+        width: 60px;
+        height: 50px;
     }
 }
