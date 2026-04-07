@@ -133,6 +133,41 @@ body {
     padding: 6rem 4rem; /* Espaçamento interno para o texto respirar */
 }
 
+/* ==========================================
+   Ajuste para Telas Pequenas (Celulares)
+   ========================================== */
+@media (max-width: 768px) {
+    /* 1. Garante que as setas fiquem SEMPRE por cima de tudo para serem clicáveis */
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 12% !important;
+        z-index: 20 !important; /* Maior que o 10 da legenda */
+    }
+
+    /* 2. Ajusta a legenda para não sumir e não cortar */
+    .carousel-caption {
+        left: 5% !important;
+        right: 5% !important;
+        width: 90% !important;
+        bottom: 40px !important; /* Sobe um pouco o botão do fundo da tela */
+        text-align: center !important; /* Centraliza no celular fica mais bonito */
+        z-index: 10 !important;
+    }
+
+    /* 3. Ajusta o texto para telas muito pequenas (iPhone SE, etc) */
+    .carousel-caption h1 {
+        font-size: 24px !important; /* Fonte menor para não quebrar em 4 linhas */
+        line-height: 1.2 !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* 4. Ajusta o botão para não ficar gigante na tela pequena */
+    .btn-hero {
+        padding: 10px 25px !important;
+        font-size: 1rem !important;
+    }
+}
+
 /* Ajuste extra para a logo não sumir no menu hamburguer do celular */
 @media (max-width: 991px) {
     .navbar-logo {
