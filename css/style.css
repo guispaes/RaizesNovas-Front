@@ -141,7 +141,7 @@ body {
 }
 
 
-@media (max-width: 768px) {
+@media (max-width: 850px) {
     /* 1. Traz as setas do carrossel um pouco mais para o centro */
     .carousel-control-prev {
         left: 5px !important;
