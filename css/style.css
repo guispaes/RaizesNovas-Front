@@ -139,3 +139,35 @@ body {
         padding: 3rem 1.5rem;
     }
 }
+
+
+@media (max-width: 768px) {
+    /* 1. Traz as setas do carrossel um pouco mais para o centro */
+    .carousel-control-prev {
+        left: 5px !important;
+    }
+    
+    .carousel-control-next {
+        right: 5px !important;
+    }
+
+    /* 2. Aumenta a área de clique para o dedo no celular */
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 15% !important; 
+    }
+
+    /* 3. Centraliza o texto e o botão no celular */
+    .carousel-caption {
+        left: 10% !important;
+        right: 10% !important;
+        text-align: center !important; /* Força o texto para o meio */
+        bottom: 20px !important; /* Desce o texto para não tampar o centro da foto */
+    }
+
+    /* 4. Diminui o tamanho da fonte gigante para caber na tela pequena */
+    .carousel-caption h1 {
+        font-size: 32px !important; /* Reduz de 52px para 32px */
+        text-shadow: 0 2px 4px rgba(0,0,0,0.8) !important; /* Sombra mais escura pra ler melhor */
+    }
+}
